@@ -1,3 +1,3 @@
 defmodule NflRushingWeb.PageViewTest do
-  use NflRushingWeb.ConnCase, async: true
+  #  use NflRushingWeb.ConnCase, async: true
 end

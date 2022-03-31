@@ -4,6 +4,7 @@ import Config
 config :nfl_rushing, NflRushing.Repo,
   url: System.get_env("DATABASE_URL"),
   show_sensitive_data_on_connection_error: true,
+  pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
 
 # For development, we disable any cache and enable
