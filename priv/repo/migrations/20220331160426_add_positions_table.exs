@@ -1,5 +1,7 @@
 defmodule NflRushing.Repo.Migrations.AddPositionsTable do
   use Ecto.Migration
+  alias Ecto.Multi
+  require Logger
 
   def change do
     create table("positions") do
