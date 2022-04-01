@@ -1,5 +1,6 @@
 defmodule NflRushing.Model.Player do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema "players" do
     field :first_name, :string
@@ -20,5 +21,35 @@ defmodule NflRushing.Model.Player do
     field :rushing_fumbles, :integer
 
     belongs_to :teams, NflRushing.Model.Team
+  end
+
+  def changeset(player, params) do
+    player
+    |> cast(params, [
+      :first_name,
+      :last_name,
+      :team,
+      :position,
+      :rushing_attempts_per_game,
+      :rushing_attempts,
+      :total_rushing_yards,
+      :average_rushing_yards_per_attempt,
+      :average_rushing_yards_per_game,
+      :total_rushing_touchdowns,
+      :longest_rush,
+      :rushing_first_downs,
+      :rushing_first_down_percentage,
+      :rushes_greater_than_20_yards,
+      :rushes_greater_than_40_yards,
+      :rushing_fumbles
+    ])
+    |> validate_number(:rushing_attempts_per_game, greater_than_or_equal_to: 0)
+    |> validate_number(:rushing_attempts, greater_than_or_equal_to: 0)
+    |> validate_number(:total_rushing_touchdowns, greater_than_or_equal_to: 0)
+    |> validate_number(:rushing_first_downs, greater_than_or_equal_to: 0)
+    |> validate_number(:rushing_first_down_percentage, greater_than_or_equal_to: 0)
+    |> validate_number(:rushes_greater_than_20_yards, greater_than_or_equal_to: 0)
+    |> validate_number(:rushes_greater_than_40_yards, greater_than_or_equal_to: 0)
+    |> validate_number(:rushing_fumbles, greater_than_or_equal_to: 0)
   end
 end

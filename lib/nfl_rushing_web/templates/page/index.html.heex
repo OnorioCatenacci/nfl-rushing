@@ -1,4 +1,15 @@
 <section class="phx-hero">
   <h1><%= gettext "Welcome to %{name}!", name: "theRush" %></h1>
-</section>
 
+</section>
+<form phx-submit="import_json" >
+  <input type="text"
+         name="req"
+         placeholder="Json File(s) To Be Imported"
+         class="form-control"
+         style="margin-top: 20px"/>
+  <button type="submit">Import Json Files</button>
+</form>
+<!--   <%# <div> 
+  <%= submit "Pick Stats File" %>
+  </div> %> -->

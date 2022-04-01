@@ -19,8 +19,8 @@ defmodule NflRushing.Repo.Migrations.AddPlayersTable do
       add :rushes_greater_than_20_yards, :integer
       add :rushes_greater_than_40_yards, :integer
       add :rushing_fumbles, :integer
-
-      timestamps()
+      add :inserted_at, :utc_datetime, default: fragment("NOW()")
+      add :updated_at, :utc_datetime, default: fragment("NOW()")
     end
   end
 end

@@ -122,6 +122,11 @@ defmodule NflRushing.Repo.Migrations.InsertPositions do
         abbreviation: "PR",
         description: "Punt Returner"
       })
+      # Have to allow for some unofficial abbreviations as well
+      |> Multi.insert(:db, %NflRushing.Model.Position{
+        abbreviation: "DB",
+        description: "Defensive Back"
+      })
 
     result = NflRushing.Repo.transaction(trans)
 

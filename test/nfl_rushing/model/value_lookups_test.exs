@@ -1,4 +1,4 @@
-defmodule ValueLookupsTest do
+defmodule Test.NflRushing.Model.ValueLookupsTest do
   use ExUnit.Case, async: true
   alias NflRushing.Model.ValueLookups
 
