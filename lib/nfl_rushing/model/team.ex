@@ -4,6 +4,8 @@ defmodule NflRushing.Model.Team do
   schema "teams" do
     # Example "JAX"
     field :abbreviation, :string
+    # Example: SD (San Diego) for the LA Chargers
+    field :alias_abbreviations, :string
     # Example "Jacksonville"
     field :city, :string
     # Example "Jaguars"

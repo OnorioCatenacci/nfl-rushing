@@ -8,12 +8,7 @@ defmodule NflRushing.Repo.Migrations.InsertTeams do
       Multi.new()
       |> Multi.insert(:arz, %NflRushing.Model.Team{
         abbreviation: "ARZ",
-        city: "Arizona",
-        nickname: "Cardinals"
-      })
-      # We also need to allow for some alternate abbreviations
-      |> Multi.insert(:ari, %NflRushing.Model.Team{
-        abbreviation: "ARI",
+        alias_abbreviations: "ARI",
         city: "Arizona",
         nickname: "Cardinals"
       })
@@ -24,11 +19,7 @@ defmodule NflRushing.Repo.Migrations.InsertTeams do
       })
       |> Multi.insert(:blt, %NflRushing.Model.Team{
         abbreviation: "BLT",
-        city: "Baltimore",
-        nickname: "Ravens"
-      })
-      |> Multi.insert(:bal, %NflRushing.Model.Team{
-        abbreviation: "BAL",
+        alias_abbreviations: "BAL",
         city: "Baltimore",
         nickname: "Ravens"
       })
@@ -52,13 +43,9 @@ defmodule NflRushing.Repo.Migrations.InsertTeams do
         city: "Cincinnati",
         nickname: "Bengals"
       })
-      |> Multi.insert(:cle, %NflRushing.Model.Team{
-        abbreviation: "CLE",
-        city: "Cleveland",
-        nickname: "Browns"
-      })
       |> Multi.insert(:clv, %NflRushing.Model.Team{
         abbreviation: "CLV",
+        alias_abbreviations: "CLE",
         city: "Cleveland",
         nickname: "Browns"
       })
@@ -82,13 +69,9 @@ defmodule NflRushing.Repo.Migrations.InsertTeams do
         city: "Green Bay",
         nickname: "Packers"
       })
-      |> Multi.insert(:hou, %NflRushing.Model.Team{
-        abbreviation: "HOU",
-        city: "Houston",
-        nickname: "Texans"
-      })
       |> Multi.insert(:hst, %NflRushing.Model.Team{
         abbreviation: "HST",
+        alias_abbreviations: "HOU",
         city: "Houston",
         nickname: "Texans"
       })
@@ -109,21 +92,19 @@ defmodule NflRushing.Repo.Migrations.InsertTeams do
       })
       |> Multi.insert(:lv, %NflRushing.Model.Team{
         abbreviation: "LV",
+        alias_abbreviations: "OAK",
         city: "Las Vegas",
         nickname: "Raiders"
       })
       |> Multi.insert(:lac, %NflRushing.Model.Team{
         abbreviation: "LAC",
+        alias_abbreviations: "SD",
         city: "Los Angeles",
         nickname: "Chargers"
       })
-      |> Multi.insert(:la, %NflRushing.Model.Team{
-        abbreviation: "LA",
-        city: "Los Angeles",
-        nickname: "Rams"
-      })
       |> Multi.insert(:lar, %NflRushing.Model.Team{
         abbreviation: "LAR",
+        alias_abbreviations: "LA",
         city: "Los Angeles",
         nickname: "Rams"
       })
@@ -191,17 +172,6 @@ defmodule NflRushing.Repo.Migrations.InsertTeams do
         abbreviation: "WAS",
         city: "Washington",
         nickname: "Football Team"
-      })
-      # We need to allow for legacy data
-      |> Multi.insert(:sd, %NflRushing.Model.Team{
-        abbreviation: "SD",
-        city: "San Diego",
-        nickname: "Chargers"
-      })
-      |> Multi.insert(:oak, %NflRushing.Model.Team{
-        abbreviation: "OAK",
-        city: "Oakland",
-        nickname: "Raiders"
       })
 
     result = NflRushing.Repo.transaction(trans)

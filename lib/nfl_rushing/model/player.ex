@@ -5,8 +5,8 @@ defmodule NflRushing.Model.Player do
   schema "players" do
     field :first_name, :string
     field :last_name, :string
-    field :team, :integer
-    field :position, :integer
+    # field :teams_id, :integer
+    # field :positions_id, :integer
     field :rushing_attempts_per_game, :float
     field :rushing_attempts, :integer
     field :total_rushing_yards, :integer
@@ -21,6 +21,7 @@ defmodule NflRushing.Model.Player do
     field :rushing_fumbles, :integer
 
     belongs_to :teams, NflRushing.Model.Team
+    belongs_to :positions, NflRushing.Model.Position
   end
 
   def changeset(player, params) do
@@ -28,8 +29,8 @@ defmodule NflRushing.Model.Player do
     |> cast(params, [
       :first_name,
       :last_name,
-      :team,
-      :position,
+      :teams_id,
+      :positions_id,
       :rushing_attempts_per_game,
       :rushing_attempts,
       :total_rushing_yards,

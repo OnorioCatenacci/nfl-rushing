@@ -6,6 +6,7 @@ defmodule NflRushing.Model.ValueLookups do
     q =
       Ecto.Query.from(t in NflRushing.Model.Team,
         where: t.abbreviation == ^team_abbreviation,
+        or_where: t.alias_abbreviations == ^team_abbreviation,
         select: t.id
       )
 

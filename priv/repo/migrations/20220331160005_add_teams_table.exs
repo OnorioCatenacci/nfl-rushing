@@ -4,6 +4,7 @@ defmodule NflRushing.Repo.Migrations.AddTeamsTable do
   def change do
     create table("teams") do
       add :abbreviation, :string, null: false
+      add :alias_abbreviations, :string, null: true
       add :city, :string, null: false
       add :nickname, :string, null: false
       add :inserted_at, :utc_datetime, default: fragment("NOW()")
