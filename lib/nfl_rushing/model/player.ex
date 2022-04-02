@@ -1,12 +1,11 @@
 defmodule NflRushing.Model.Player do
+  @moduledoc false
   use Ecto.Schema
   import Ecto.Changeset
 
   schema "players" do
     field :first_name, :string
     field :last_name, :string
-    # field :teams_id, :integer
-    # field :positions_id, :integer
     field :rushing_attempts_per_game, :float
     field :rushing_attempts, :integer
     field :total_rushing_yards, :integer

@@ -1,15 +1,21 @@
 defmodule NflRushing.Controller.Player do
+  @moduledoc false
   alias Ecto.Multi
   alias Jason
 
   alias NflRushing.Model.ValueLookups
 
+  @spec insert_players(String.t(), String.t()) ::
+          {:ok, any()} | {:error, any()}
   def insert_players(path, file) do
+    {:ok, player_stats} = parse_player_stats(path, file)
+
     Multi.new()
-    |> Multi.insert_all(:insert_players, NflRushing.Model.Player, parse_player_stats(path, file))
+    |> Multi.insert_all(:insert_players, NflRushing.Model.Player, player_stats)
     |> NflRushing.Repo.transaction()
   end
 
+  @spec parse_json(String.t(), String.t()) :: {:ok, term()} | {:error, Jason.DecodeError.t()}
   def parse_json(nil, _file), do: {:error, "You must specify a path"}
   def parse_json(_path, nil), do: {:error, "You must specify a json file to be parsed"}
 
@@ -24,15 +30,19 @@ defmodule NflRushing.Controller.Player do
     end
   end
 
+  @spec parse_player_stats(String.t(), String.t()) :: {:ok, [%{}]} | {:error, String.t()}
   def parse_player_stats(nil, _file), do: {:error, "You must specify a path"}
   def parse_player_stats(_path, nil), do: {:error, "You must specify a json file to be parsed"}
 
   def parse_player_stats(path, file) do
     {:ok, params_list} = parse_json(path, file)
 
-    for current_player <- params_list do
-      create_new_map_from_player(current_player)
-    end
+    player_stats =
+      for current_player <- params_list do
+        create_new_map_from_player(current_player)
+      end
+
+    {:ok, player_stats}
   end
 
   defp player_first_name(player) do
