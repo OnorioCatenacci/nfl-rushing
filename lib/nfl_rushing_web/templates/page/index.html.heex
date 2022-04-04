@@ -2,16 +2,21 @@
   <h1><%= gettext "Welcome to %{name}!", name: "theRush" %></h1>
 
 </section>
-<div id="sort_buttons" style= "justify-content: center">
+<div align="left">
 <button onclick="window.open('http://localhost:4000/totalrushing','_self')">Total Rushing Yds &uarr;</button>
 <button onclick="window.open('http://localhost:4000/totalrushing_desc','_self')">Total Rushing Yds &darr;</button>
 <button onclick="window.open('http://localhost:4000/longestrush','_self')">Longest Rush &uarr;</button>
 <button onclick="window.open('http://localhost:4000/longestrush_desc','_self')">Longest Rush &darr;</button>
 <button onclick="window.open('http://localhost:4000/totalrushingtds','_self')">Total Rushing Tds &uarr;</button>
 <button onclick="window.open('http://localhost:4000/totalrushingtds_desc','_self')">Total Rushing Tds &darr;</button>
+<div align = "right">
+<label>Last Name To Filter By</label>
+<%= select(:unique_names, :names, @last_name_list) %>
+</div>
 </div>
 
- <h1>Players</h1>
+ 
+<h1>Players</h1>
  
  <table>
  <tr>
