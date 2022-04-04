@@ -18,6 +18,12 @@ defmodule NflRushingWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/totalrushing", PageController, :total_rushing_yds
+    get "/totalrushing_desc", PageController, :total_rushing_yds_desc
+    get "/longestrush", PageController, :longest_rush
+    get "/longestrush_desc", PageController, :longest_rush_desc
+    get "/totalrushingtds", PageController, :total_rushing_tds
+    get "/totalrushingtds_desc", PageController, :total_rushing_tds_desc
   end
 
   # Other scopes may use custom stacks.

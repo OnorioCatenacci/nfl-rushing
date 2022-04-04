@@ -2,12 +2,23 @@
   <h1><%= gettext "Welcome to %{name}!", name: "theRush" %></h1>
 
 </section>
+<div id="sort_buttons" style= "justify-content: center">
+<button onclick="window.open('http://localhost:4000/totalrushing','_self')">Total Rushing Yds &uarr;</button>
+<button onclick="window.open('http://localhost:4000/totalrushing_desc','_self')">Total Rushing Yds &darr;</button>
+<button onclick="window.open('http://localhost:4000/longestrush','_self')">Longest Rush &uarr;</button>
+<button onclick="window.open('http://localhost:4000/longestrush_desc','_self')">Longest Rush &darr;</button>
+<button onclick="window.open('http://localhost:4000/totalrushingtds','_self')">Total Rushing Tds &uarr;</button>
+<button onclick="window.open('http://localhost:4000/totalrushingtds_desc','_self')">Total Rushing Tds &darr;</button>
+</div>
 
  <h1>Players</h1>
+ 
  <table>
  <tr>
  <th>First Name</th>
  <th>Last Name</th>
+ <th>Team</th>
+ <th>Position</th>
  <th>Rushing Attempts/Game</th>
  <th>Rushing Attempts</th>
  <th>Total Rushing Yards</th>
@@ -22,19 +33,21 @@
  </tr>
  <%= for player <- @players do %>
  <tr>
- <td><%= player.first_name %></td> 
- <td><%= player.last_name %></td>
- <td><%= player.rushing_attempts_per_game %></td>
- <td><%= player.rushing_attempts %></td>
- <td><%= player.total_rushing_yards %></td>
- <td><%= player.average_rushing_yards_per_attempt %></td>
- <td><%= player.average_rushing_yards_per_game %> </td>
- <td><%= player.total_rushing_touchdowns %> </td>
- <td><%= player.longest_rush %> </td>
- <td><%= player.rushing_first_downs %></td>
-<td><%= player.rushes_greater_than_20_yards %></td>
-<td><%= player.rushes_greater_than_40_yards %></td>
-<td><%= player.rushing_fumbles %></td>
+ <td><%= player[:first_name] %></td> 
+ <td><%= player[:last_name] %></td>
+<td><%= player[:team] %></td>
+ <td><%= player[:position] %></td>
+  <td><%= player[:rushing_attempts_per_game] %></td>
+ <td><%= player[:rushing_attempts] %></td>
+ <td><%= player[:total_rushing_yards] %></td>
+ <td><%= player[:average_rushing_yards_per_attempt] %></td>
+ <td><%= player[:average_rushing_yards_per_game] %> </td>
+ <td><%= player[:total_rushing_touchdowns] %> </td>
+ <td><%= player[:longest_rush] %> </td>
+ <td><%= player[:rushing_first_downs] %></td>
+<td><%= player[:rushes_greater_than_20_yards] %></td>
+<td><%= player[:rushes_greater_than_40_yards] %></td>
+<td><%= player[:rushing_fumbles] %></td>
 
  </tr>
  <% end %>
