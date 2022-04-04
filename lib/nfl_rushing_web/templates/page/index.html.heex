@@ -2,14 +2,40 @@
   <h1><%= gettext "Welcome to %{name}!", name: "theRush" %></h1>
 
 </section>
-<form phx-submit="import_json" >
-  <input type="text"
-         name="req"
-         placeholder="Json File(s) To Be Imported"
-         class="form-control"
-         style="margin-top: 20px"/>
-  <button type="submit">Import Json Files</button>
-</form>
-<!--   <%# <div> 
-  <%= submit "Pick Stats File" %>
-  </div> %> -->
+
+ <h1>Players</h1>
+ <table>
+ <tr>
+ <th>First Name</th>
+ <th>Last Name</th>
+ <th>Rushing Attempts/Game</th>
+ <th>Rushing Attempts</th>
+ <th>Total Rushing Yards</th>
+ <th>Average Rushing Yards/Attempt</th>
+ <th>Average Rushing Yards/Game</th>
+ <th>Total Rushing TDs</th>
+ <th>Longest Rush</th>
+ <th>Rushing First Downs</th>
+ <th>Rushes Greater Than 20 Yards</th>
+ <th>Rushes Greater Than 40 Yards</th>
+ <th>Rushing Fumbles</th>
+ </tr>
+ <%= for player <- @players do %>
+ <tr>
+ <td><%= player.first_name %></td> 
+ <td><%= player.last_name %></td>
+ <td><%= player.rushing_attempts_per_game %></td>
+ <td><%= player.rushing_attempts %></td>
+ <td><%= player.total_rushing_yards %></td>
+ <td><%= player.average_rushing_yards_per_attempt %></td>
+ <td><%= player.average_rushing_yards_per_game %> </td>
+ <td><%= player.total_rushing_touchdowns %> </td>
+ <td><%= player.longest_rush %> </td>
+ <td><%= player.rushing_first_downs %></td>
+<td><%= player.rushes_greater_than_20_yards %></td>
+<td><%= player.rushes_greater_than_40_yards %></td>
+<td><%= player.rushing_fumbles %></td>
+
+ </tr>
+ <% end %>
+ </table>
