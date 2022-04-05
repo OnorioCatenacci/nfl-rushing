@@ -3,7 +3,7 @@ defmodule NflRushingWeb.PageController do
   alias NflRushing.Model.Player
 
   def index(conn, _params) do
-    render(conn, "index.html", set_data_for_view("no_sort"))
+    render(conn, "index.html", set_data_for_view("unsorted"))
   end
 
   def total_rushing_yds(conn, _params) do
@@ -11,7 +11,6 @@ defmodule NflRushingWeb.PageController do
   end
 
   def total_rushing_yds_desc(conn, _params) do
-    player_list = Player.list_players("total_rushing_yds_desc") |> NflRushing.Repo.all()
     render(conn, "index.html", set_data_for_view("total_rushing_yds_desc"))
   end
 
@@ -32,7 +31,7 @@ defmodule NflRushingWeb.PageController do
   end
 
   defp set_data_for_view(player_sort) do
-    player_list = Player.list_players(player_sort) |> NflRushing.Repo.all()
+    player_list = Player.list_players_sorted(player_sort) |> NflRushing.Repo.all()
     last_name_list = Player.last_name_list() |> NflRushing.Repo.all()
     [players: player_list, last_name_list: last_name_list]
   end

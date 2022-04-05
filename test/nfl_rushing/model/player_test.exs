@@ -70,6 +70,6 @@ defmodule Test.NflRushing.Model.PlayerTest do
   end
 
   defp get_number_of_records_for_sort(sort_order) do
-    Player.list_players(sort_order) |> NflRushing.Repo.all() |> length
+    Player.list_players_sorted(sort_order) |> NflRushing.Repo.all() |> length
   end
 end
