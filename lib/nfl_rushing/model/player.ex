@@ -96,5 +96,6 @@ defmodule NflRushing.Model.Player do
   defp filter_player_by("longest_rush_desc"), do: [desc: :longest_rush]
   defp filter_player_by("total_rushing_touchdowns_asc"), do: [asc: :total_rushing_touchdowns]
   defp filter_player_by("total_rushing_touchdowns_desc"), do: [desc: :total_rushing_touchdowns]
+  defp filter_player_by("unsorted"), do: []
   defp filter_player_by(_), do: []
 end
