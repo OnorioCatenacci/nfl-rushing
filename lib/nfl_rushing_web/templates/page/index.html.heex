@@ -1,7 +1,7 @@
 <section class="phx-hero">
   <h1><%= gettext "Welcome to %{name}!", name: "theRush" %></h1>
-
 </section>
+
 <div align="left">
 <button onclick="window.open('http://localhost:4000/totalrushing','_self')">Total Rushing Yds &uarr;</button>
 <button onclick="window.open('http://localhost:4000/totalrushing_desc','_self')">Total Rushing Yds &darr;</button>
@@ -10,7 +10,8 @@
 <button onclick="window.open('http://localhost:4000/totalrushingtds','_self')">Total Rushing Tds &uarr;</button>
 <button onclick="window.open('http://localhost:4000/totalrushingtds_desc','_self')">Total Rushing Tds &darr;</button>
 <div align = "right">
-<label>Last Name To Filter By</label>
+<button>Create CSV From Current Table</button>
+<label>Last Name:</label>
 <%= select(:unique_names, :names, @last_name_list) %>
 </div>
 </div>
