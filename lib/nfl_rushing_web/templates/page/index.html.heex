@@ -2,43 +2,57 @@
   <h1><%= gettext "Welcome to %{name}!", name: "theRush" %></h1>
 </section>
 
-<div align="left">
-<button onclick="window.open('http://localhost:4000/totalrushing','_self')">Total Rushing Yds (<em>Min &rarr; Max</em>)</button>
-<br/>
-<button onclick="window.open('http://localhost:4000/totalrushing_desc','_self')">Total Rushing Yds (<em>Max &rarr; Min</em>)</button>
-<br/>
-<button onclick="window.open('http://localhost:4000/longestrush','_self')">Longest Rush (<em>Min &rarr; Max</em>)</button>
-<br/>
-<button onclick="window.open('http://localhost:4000/longestrush_desc','_self')">Longest Rush (<em>Max &rarr; Min</em>)</button>
-<br/>
-<button onclick="window.open('http://localhost:4000/totalrushingtds','_self')">Total Rushing Tds (<em>Min &rarr; Max</em>)</button>
-<br/>
-<button onclick="window.open('http://localhost:4000/totalrushingtds_desc','_self')">Total Rushing Tds (<em>Max &rarr; Min</em>)</button>
+<div class="container">
+<div class="row">
+<div class="col">
+<button class="btn btn-primary" onclick="window.open('http://localhost:4000/totalrushing','_self')">Total Rushing Yds (<em>Min &rarr; Max</em>)</button>
 </div>
-<div align="right">
-<button>Create CSV</button>
+<div class="col">
+<button class="btn btn-primary" onclick="window.open('http://localhost:4000/totalrushing_desc','_self')">Total Rushing Yds (<em>Max &rarr; Min</em>)</button>
 </div>
+<div class="col">
+<button class="btn btn-primary" onclick="window.open('http://localhost:4000/longestrush','_self')">Longest Rush (<em>Min &rarr; Max</em>)</button>
+</div>
+<div class="col">
+<button class="btn btn-primary" onclick="window.open('http://localhost:4000/longestrush_desc','_self')">Longest Rush (<em>Max &rarr; Min</em>)</button>
+</div>
+<div class="col">
+<button class="btn btn-primary" onclick="window.open('http://localhost:4000/totalrushingtds','_self')">Total Rushing Tds (<em>Min &rarr; Max</em>)</button>
+</div>
+<div class="col">
+<button class="btn btn-primary" onclick="window.open('http://localhost:4000/totalrushingtds_desc','_self')">Total Rushing Tds (<em>Max &rarr; Min</em>)</button>
+</div>
+<div class="col">
+<button class="btn btn-primary">Create CSV</button>
+</div>
+</div>
+</div>
+<br/>
+<br/>
 
  
-<h1>Players</h1>
+<h1 class="text-center">Players</h1>
  
- <table>
+ <table class="table table-striped">
+ <thead>
  <tr>
- <th>Name</th>
- <th>Team</th>
- <th>Position</th>
- <th>Rushing Attempts/Game</th>
- <th>Rushing Attempts</th>
- <th>Total Rushing Yards</th>
- <th>Average Rushing Yards/Attempt</th>
- <th>Average Rushing Yards/Game</th>
- <th>Total Rushing TDs</th>
- <th>Longest Rush</th>
- <th>Rushing First Downs</th>
- <th>Rushes Greater Than 20 Yards</th>
- <th>Rushes Greater Than 40 Yards</th>
- <th>Rushing Fumbles</th>
+ <th scope="col">Name</th>
+ <th scope="col">Team</th>
+ <th scope="col">Position</th>
+ <th scope="col">Rushing Attempts/Game</th>
+ <th scope="col">Rushing Attempts</th>
+ <th scope="col">Total Rushing Yards</th>
+ <th scope="col">Average Rushing Yards/Attempt</th>
+ <th scope="col">Average Rushing Yards/Game</th>
+ <th scope="col">Total Rushing TDs</th>
+ <th scope="col">Longest Rush</th>
+ <th scope="col">Rushing First Downs</th>
+ <th scope="col">Rushes Greater Than 20 Yards</th>
+ <th scope="col">Rushes Greater Than 40 Yards</th>
+ <th scope="col">Rushing Fumbles</th>
  </tr>
+ </thead>
+
  <%= for player <- @players do %>
  <tr>
  <td><%= player[:name] %></td> 
@@ -55,7 +69,6 @@
  <td><%= player[:rushes_greater_than_20_yards] %></td>
  <td><%= player[:rushes_greater_than_40_yards] %></td>
  <td><%= player[:rushing_fumbles] %></td>
-
 </tr>
  <% end %>
  </table>

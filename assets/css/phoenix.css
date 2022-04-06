@@ -16,23 +16,6 @@ h5{font-size: 1.6rem; letter-spacing: 0; line-height: 1.4}
 h6{font-size: 1.4rem; letter-spacing: 0; line-height: 1.2}
 pre{padding: 1em;}
 
-table {
-  border: 1px solid black;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: WhiteSmoke;
-}
-
 .container{
   margin: 0 auto;
   max-width: 80.0rem;
