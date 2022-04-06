@@ -45,18 +45,10 @@ defmodule NflRushing.Controller.Player do
     {:ok, player_stats}
   end
 
-  defp player_first_name(player) do
+  defp player_name(player) do
     # Remove any leading or trailing whitespace
     trimmed_player = String.trim(player)
-    [first | _] = String.split(trimmed_player)
-    first
-  end
-
-  defp player_last_name(player) do
-    # Remove any leading or trailing whitespace
-    trimmed_player = String.trim(player)
-    [_ | last] = String.split(trimmed_player)
-    Enum.join(last, " ")
+    trimmed_player
   end
 
   defp parse_longest_rush(long_rush) when is_integer(long_rush), do: long_rush
@@ -80,8 +72,7 @@ defmodule NflRushing.Controller.Player do
     {:ok, position_id} = ValueLookups.get_position_id(current_player["Pos"])
 
     %{
-      first_name: player_first_name(current_player["Player"]),
-      last_name: player_last_name(current_player["Player"]),
+      name: player_name(current_player["Player"]),
       teams_id: team_id,
       positions_id: position_id,
       rushing_attempts_per_game: convert_value_to_float(current_player["Att/G"]),

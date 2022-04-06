@@ -3,8 +3,7 @@ defmodule NflRushing.Repo.Migrations.AddPlayersTable do
 
   def change do
     create table("players") do
-      add :first_name, :string
-      add :last_name, :string
+      add :name, :string
       add :teams_id, references("teams"), null: false
       add :positions_id, references("positions"), null: false
       add :rushing_attempts_per_game, :float

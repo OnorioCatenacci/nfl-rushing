@@ -4,8 +4,7 @@ defmodule NflRushing.Model.Player do
   require Ecto.Query
 
   schema "players" do
-    field :first_name, :string
-    field :last_name, :string
+    field :name, :string
     field :rushing_attempts_per_game, :float
     field :rushing_attempts, :integer
     field :total_rushing_yards, :integer
@@ -41,8 +40,7 @@ defmodule NflRushing.Model.Player do
         on: po.id == pl.positions_id,
         order_by: ^filter_player_by(sort_order),
         select: [
-          first_name: pl.first_name,
-          last_name: pl.last_name,
+          name: pl.name,
           team: fragment("concat(?,' ',?)", t.city, t.nickname),
           position: po.description,
           rushing_attempts_per_game: pl.rushing_attempts_per_game,
@@ -62,10 +60,10 @@ defmodule NflRushing.Model.Player do
     query
   end
 
-  def list_players_filtered_and_sorted(sort_order, last_name) do
+  def list_players_filtered_and_sorted(sort_order, name) do
     query = list_players_sorted(sort_order)
-    filter_by_last_name = Ecto.Query.from(q in query, select: q.last_name == ^last_name)
-    filter_by_last_name
+    filter_by_name = Ecto.Query.from(q in query, select: like(q.name, "%"<>^name<>"%")
+    filter_by_name
   end
 
   defp filter_player_by("total_rushing_yds_asc"), do: [asc: :total_rushing_yards]
