@@ -32,7 +32,7 @@ defmodule NflRushingWeb.PageController do
 
   defp set_data_for_view(player_sort) do
     player_list = Player.list_players_sorted(player_sort) |> NflRushing.Repo.all()
-    last_name_list = Player.last_name_list() |> NflRushing.Repo.all()
-    [players: player_list, last_name_list: last_name_list]
+    # last_name_list = Player.last_name_list() |> NflRushing.Repo.all()
+    [players: player_list]
   end
 end

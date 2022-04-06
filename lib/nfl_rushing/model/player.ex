@@ -22,13 +22,13 @@ defmodule NflRushing.Model.Player do
     belongs_to :positions, NflRushing.Model.Position
   end
 
-  def last_name_list() do
-    Ecto.Query.from(
-      pl in NflRushing.Model.Player,
-      select: pl.last_name
-    )
-    |> Ecto.Query.distinct(true)
-  end
+  # def last_name_list() do
+  #   Ecto.Query.from(
+  #     pl in NflRushing.Model.Player,
+  #     select: pl.last_name
+  #   )
+  #   |> Ecto.Query.distinct(true)
+  # end
 
   def list_players_sorted(sort_order) do
     query =
@@ -60,11 +60,11 @@ defmodule NflRushing.Model.Player do
     query
   end
 
-  def list_players_filtered_and_sorted(sort_order, name) do
-    query = list_players_sorted(sort_order)
-    filter_by_name = Ecto.Query.from(q in query, select: like(q.name, "%" <> ^name <> "%"))
-    filter_by_name
-  end
+  # def list_players_filtered_and_sorted(sort_order, name) do
+  #   query = list_players_sorted(sort_order)
+  #   filter_by_name = Ecto.Query.from(q in query, select: like(q.name, "%" <> name <> "%"))
+  #   filter_by_name
+  # end
 
   defp filter_player_by("total_rushing_yds_asc"), do: [asc: :total_rushing_yards]
   defp filter_player_by("total_rushing_yds_desc"), do: [desc: :total_rushing_yards]

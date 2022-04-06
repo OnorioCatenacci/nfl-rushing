@@ -11,8 +11,6 @@
 <button onclick="window.open('http://localhost:4000/totalrushingtds_desc','_self')">Total Rushing Tds &darr;</button>
 <div align = "right">
 <button>Create CSV From Current Table</button>
-<label>Last Name:</label>
-<%= select(:unique_names, :names, @last_name_list) %>
 </div>
 </div>
 
@@ -21,8 +19,7 @@
  
  <table>
  <tr>
- <th>First Name</th>
- <th>Last Name</th>
+ <th>Name</th>
  <th>Team</th>
  <th>Position</th>
  <th>Rushing Attempts/Game</th>
@@ -39,11 +36,10 @@
  </tr>
  <%= for player <- @players do %>
  <tr>
- <td><%= player[:first_name] %></td> 
- <td><%= player[:last_name] %></td>
-<td><%= player[:team] %></td>
+ <td><%= player[:name] %></td> 
+ <td><%= player[:team] %></td>
  <td><%= player[:position] %></td>
-  <td><%= player[:rushing_attempts_per_game] %></td>
+ <td><%= player[:rushing_attempts_per_game] %></td>
  <td><%= player[:rushing_attempts] %></td>
  <td><%= player[:total_rushing_yards] %></td>
  <td><%= player[:average_rushing_yards_per_attempt] %></td>
@@ -51,10 +47,10 @@
  <td><%= player[:total_rushing_touchdowns] %> </td>
  <td><%= player[:longest_rush] %> </td>
  <td><%= player[:rushing_first_downs] %></td>
-<td><%= player[:rushes_greater_than_20_yards] %></td>
-<td><%= player[:rushes_greater_than_40_yards] %></td>
-<td><%= player[:rushing_fumbles] %></td>
+ <td><%= player[:rushes_greater_than_20_yards] %></td>
+ <td><%= player[:rushes_greater_than_40_yards] %></td>
+ <td><%= player[:rushing_fumbles] %></td>
 
- </tr>
+</tr>
  <% end %>
  </table>
