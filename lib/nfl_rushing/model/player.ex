@@ -62,7 +62,7 @@ defmodule NflRushing.Model.Player do
 
   def list_players_filtered_and_sorted(sort_order, name) do
     query = list_players_sorted(sort_order)
-    filter_by_name = Ecto.Query.from(q in query, select: like(q.name, "%"<>^name<>"%")
+    filter_by_name = Ecto.Query.from(q in query, select: like(q.name, "%" <> ^name <> "%"))
     filter_by_name
   end
 
